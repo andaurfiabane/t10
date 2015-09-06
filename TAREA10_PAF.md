@@ -8,7 +8,7 @@ Esta es una simple API de consulta de videos on-line y grabaciones.
 
 ## Videos [/videos]
 
-### Listado videos [GET]
+### Listar videos [GET]
 
 Permite listar videos grabados.
  
@@ -143,7 +143,7 @@ Permite la eliminación de un video.
 
 ## Transmisión de video [/transmision]
 
-### Transmisión video [GET]
+### Transmitir video [GET]
 
 Permite la transmisión de video on-line.
  
@@ -173,7 +173,7 @@ Permite la transmisión de video on-line.
 
 ## Reproducción de video [/reproduccion]
 
-### Reproducción de video [GET]
+### Reproducir video [GET]
 
 Permite la reproducción de grabaciones de video.
  
@@ -201,6 +201,8 @@ Permite la reproducción de grabaciones de video.
                     }
                                
              }
+            
+            
             
             
             
