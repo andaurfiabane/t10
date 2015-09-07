@@ -6,16 +6,18 @@ HOST: http://polls.apiblueprint.org/
 Esta es una simple API de consulta de videos on-line y grabaciones.
 
 
-## Videos [/videos]
+## Videos [/videos/{?id}]
 
-### Listar videos [GET]
+### Listar videos [GET /videos/]
 
 Permite listar videos grabados.
  
 + Response 200 (application/json)
 
-        [
-            {
+    + Body
+
+             [
+                {
                 "Videos": [
                     {
                             "Video": {
@@ -30,6 +32,7 @@ Permite listar videos grabados.
                             "brillo": 10,
                             "color": "rgba(0,0,0)",
                             "contraste": 20,
+                            "urlDescarga": "http://www.ejemplovideo.com/videos/video?1",
                             "idCamara": "Cam_03"
                                      }
                     },
@@ -46,6 +49,7 @@ Permite listar videos grabados.
                             "brillo": 25,
                             "color": "rgba(0,0,0)",
                             "contraste": 25,
+                            "urlDescarga": "http://www.ejemplovideo.com/videos/video?2",
                             "idCamara": "Cam_01"
                                      }
                     },
@@ -62,6 +66,7 @@ Permite listar videos grabados.
                             "brillo": 10,
                             "color": "rgba(0,0,0)",
                             "contraste": 10,
+                            "urlDescarga": "http://www.ejemplovideo.com/videos/video?3",
                             "idCamara": "Cam_02"
                                      }
                     },
@@ -78,20 +83,24 @@ Permite listar videos grabados.
                             "brillo": 15,
                             "color": "rgba(0,0,0)",
                             "contraste": 25,
+                            "urlDescarga": "http://www.ejemplovideo.com/videos/video?4",
                             "idCamara": "Cam_01"
                                      }
                     }
                           ]
-             }
-        ] 
+                 }
+             ] 
  
-### Grabar video [POST]
+### Grabar video [POST /videos/]
 
 Permite la grabación de video.
 
 + Request (application/json)
+  
 
-        {
+    + Body
+    
+            {
                 "Video": {
                             "id": 5,
                             "formatoCompresión": "XviD",
@@ -99,12 +108,12 @@ Permite la grabación de video.
                             "inicioTransmisión": "11:55:40",
                             "finTransmisión": "11:59:40",
                             "factorCalidad": "Alta",
-                             "brillo": 10,
+                            "brillo": 10,
                             "color": "rgba(0,0,0)",
                             "contraste": 20,
                             "idCamara": "Cam_02"
                          }
-        }
+            }
 
 + Response 201 (application/json)
 
@@ -124,9 +133,15 @@ Permite la grabación de video.
                      }
             }
             
-### Eliminar video [DELETE]
+### Eliminar video [DELETE /videos/{?id}]
 
 Permite la eliminación de un video.
+
++ Request (application/json)
+
++ Parameters
+  + id (required, int)
+
 
 + Response 200 (application/json)
 
@@ -141,47 +156,168 @@ Permite la eliminación de un video.
             }
 
 
-## Transmisión de video [/transmision]
+## Cámaras [/camaras/{?id}]
 
-### Transmitir video [GET]
+### Listar cámaras [GET /camaras/]
 
-Permite la transmisión de video on-line.
+Permite listar las cámaras disponibles.
  
++ Response 200 (application/json)
+
+    + Body
+
+             [
+                {
+                "Camaras": [
+                    {
+                            "camara": {
+                            "id": "Cam_01",
+                            "factorCalidad": "Alta",
+                            "brillo": 10,
+                            "color": "rgba(0,0,0)",
+                            "contraste": 20,
+                            "ip": "192.168.1.22"
+                                     }
+                    },
+                     {
+                            "camara": {
+                            "id": "Cam_02",
+                            "factorCalidad": "Alta",
+                            "brillo": 42,
+                            "color": "rgba(0,0,0)",
+                            "contraste": 10,
+                            "ip": "192.168.1.23"
+                                     }
+                    }
+                          ]
+                 }
+             ] 
+ 
+### Agregar cámara [POST /camaras/]
+
+Permite agregar una nueva cámara.
+
++ Request (application/json)
+  
+
+    + Body
+    
+            {
+                 "camara": {
+                            "id": "Cam_03",
+                            "factorCalidad": "Alta",
+                            "brillo": 10,
+                            "color": "rgba(0,0,0)",
+                            "contraste": 13,
+                            "ip": "192.168.1.23"
+                            }
+            }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /camaras
+
+    + Body
+
+            {
+                "Mensaje": "Cámara agregada correctamente!"
+            }            
+
+### Eliminar cámara [DELETE /camaras/{?id}]
+
+Permite quitar una cámara del sistema.
+
++ Request (application/json)
+
++ Parameters
+  + id (required, int)
+
+
 + Response 200 (application/json)
 
     + Headers
             
-            Location: /transmision/Cam_02
+            Location: /camaras
+            
+    + Body
+    
+            {
+                "Mensaje": "Cámara quitada correctamente!"    
+            }            
+            
+### Modificar cámara [PUT /camaras/{?id}]
+
+Permite modificar una cámara.
+
++ Request (application/json)
+  
+
+    + Body
+    
+            {
+                 "camara": {
+                            "factorCalidad": "Alta",
+                            "brillo": 10,
+                            "color": "rgba(0,0,0)",
+                            "contraste": 13,
+                            "ip": "192.168.1.23"
+                            }
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "Mensaje": "Cámara modificada correctamente!"
+            }            
+
+
+## Transmisión de video [/transmision/]
+
+### Transmitir video [GET /transmision/{?idCamara}]
+
+Permite la transmisión de video on-line.
+
++ Request (application/json)
+  
++ Parameters
+  + idCamara (required, string)
+  
+ 
++ Response 200 (application/json)
 
     + Body
     
             {
                 "Transmisión_on-line": 
                     {
-                      "Video": {
-                        "id": 5,
-                        "factorCalidad": "Alta",
-                        "brillo": 18,
-                        "color": "rgba(0,0,0)",
-                        "contraste": 22,
-                        "idCamara": "Cam_02",
-                        "inicioTransmisión": "11:55:40"
-                             }       
+                      "id": 5,
+                      "urlTransmision": "http://www.ejemplotransmision.com/transmision/?idCamara=Cam_02",
+                      "factorCalidad": "Alta",
+                      "brillo": 18,
+                      "color": "rgba(0,0,0)",
+                      "contraste": 22,
+                      "inicioTransmisión": "11:55:40"
                     }
                                
              }
+             
 
 ## Reproducción de video [/reproduccion]
 
-### Reproducir video [GET]
+### Reproducir video [GET /reproduccion/{?idVideo}]
 
 Permite la reproducción de grabaciones de video.
- 
-+ Response 200 (application/json)
 
-    + Headers
-            
-            Location: /reproduccion/5
++ Request (application/json)
+  
++ Parameters
+  + idVideo (required, int)
+
++ Response 200 (application/json)
 
     + Body
 
@@ -201,9 +337,3 @@ Permite la reproducción de grabaciones de video.
                     }
                                
              }
-            
-            
-            
-            
-            
-            
