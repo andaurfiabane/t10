@@ -119,7 +119,7 @@ Permite la grabación de video.
 
     + Headers
 
-            Location: /videos
+            Location: /videos/
 
     + Body
 
@@ -147,7 +147,7 @@ Permite la eliminación de un video.
 
     + Headers
             
-            Location: /videos/5
+            Location: /videos/
             
     + Body
     
@@ -239,7 +239,7 @@ Permite quitar una cámara del sistema.
 
     + Headers
             
-            Location: /camaras
+            Location: /camaras/
             
     + Body
     
@@ -337,3 +337,4 @@ Permite la reproducción de grabaciones de video.
                     }
                                
              }
+   
