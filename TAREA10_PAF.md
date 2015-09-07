@@ -32,7 +32,7 @@ Permite listar videos grabados.
                             "brillo": 10,
                             "color": "rgba(0,0,0)",
                             "contraste": 20,
-                            "urlDescarga": "http://www.ejemplovideo.com/videos/video?1",
+                            "urlDescarga": "http://www.ejemplovideo.com/videos/?video=1",
                             "idCamara": "Cam_03"
                                      }
                     },
@@ -49,7 +49,7 @@ Permite listar videos grabados.
                             "brillo": 25,
                             "color": "rgba(0,0,0)",
                             "contraste": 25,
-                            "urlDescarga": "http://www.ejemplovideo.com/videos/video?2",
+                            "urlDescarga": "http://www.ejemplovideo.com/videos/?video=2",
                             "idCamara": "Cam_01"
                                      }
                     },
@@ -66,7 +66,7 @@ Permite listar videos grabados.
                             "brillo": 10,
                             "color": "rgba(0,0,0)",
                             "contraste": 10,
-                            "urlDescarga": "http://www.ejemplovideo.com/videos/video?3",
+                            "urlDescarga": "http://www.ejemplovideo.com/videos/?video=3",
                             "idCamara": "Cam_02"
                                      }
                     },
@@ -83,7 +83,7 @@ Permite listar videos grabados.
                             "brillo": 15,
                             "color": "rgba(0,0,0)",
                             "contraste": 25,
-                            "urlDescarga": "http://www.ejemplovideo.com/videos/video?4",
+                            "urlDescarga": "http://www.ejemplovideo.com/videos/?video=4",
                             "idCamara": "Cam_01"
                                      }
                     }
