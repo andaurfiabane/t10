@@ -275,7 +275,7 @@ Permite modificar una cámara.
             }            
 
 
-## Transmisión de video [/transmision/]
+## Transmisión de video [/transmision/{?idCamara}]
 
 ### Transmitir video [GET /transmision/{?idCamara}]
 
@@ -306,7 +306,7 @@ Permite la transmisión de video on-line.
              }
              
 
-## Reproducción de video [/reproduccion]
+## Reproducción de video [/reproduccion/{?idVideo}]
 
 ### Reproducir video [GET /reproduccion/{?idVideo}]
 
