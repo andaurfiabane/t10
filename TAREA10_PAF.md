@@ -217,7 +217,7 @@ Permite agregar una nueva cámara.
 
     + Headers
 
-            Location: /camaras
+            Location: /camaras/
 
     + Body
 
@@ -337,4 +337,3 @@ Permite la reproducción de grabaciones de video.
                     }
                                
              }
-   
